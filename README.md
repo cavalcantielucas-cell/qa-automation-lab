@@ -249,3 +249,14 @@ Próximas melhorias planejadas:
 Lucas Cavalcanti
 
 Projeto desenvolvido como parte de um portfólio prático para área de Quality Assurance.
+
+## Relatórios de execução
+
+O projeto gera relatórios HTML para testes E2E e testes de API.
+
+### Relatório Cypress
+
+Gerado em:
+
+```txt
+reports/cypress/

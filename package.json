@@ -9,7 +9,10 @@
   "test:e2e": "cypress run",
   "test:e2e:chrome": "cypress run --browser chrome",
   "test:api": "newman run ./postman/collections/jsonplaceholder-api.postman_collection.json --env-var baseUrl=https://jsonplaceholder.typicode.com --env-var userId=1 --env-var postId=1",
-  "test:all": "npm run test:e2e && npm run test:api"
+  "pretest:api:report": "node -e \"require('fs').mkdirSync('reports/newman',{recursive:true})\"",
+  "test:api:report": "newman run ./postman/collections/jsonplaceholder-api.postman_collection.json --env-var baseUrl=https://jsonplaceholder.typicode.com --env-var userId=1 --env-var postId=1 -r cli,htmlextra --reporter-htmlextra-export reports/newman/api-report.html",
+  "test:all": "npm run test:e2e && npm run test:api",
+  "test:reports": "npm run test:e2e && npm run test:api:report"
 },
   "keywords": [],
   "author": "",
@@ -19,7 +22,9 @@
     "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
     "cypress": "^15.16.0",
+    "cypress-mochawesome-reporter": "^4.0.2",
     "esbuild": "^0.28.0",
-    "newman": "^6.2.2"
+    "newman": "^6.2.2",
+    "newman-reporter-htmlextra": "^1.23.1"
   }
 }
