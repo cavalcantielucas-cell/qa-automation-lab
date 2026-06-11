@@ -7,7 +7,9 @@
   "cy:open": "cypress open",
   "cy:run": "cypress run",
   "test:e2e": "cypress run",
-  "test:e2e:chrome": "cypress run --browser chrome"
+  "test:e2e:chrome": "cypress run --browser chrome",
+  "test:api": "newman run ./postman/collections/jsonplaceholder-api.postman_collection.json --env-var baseUrl=https://jsonplaceholder.typicode.com --env-var userId=1 --env-var postId=1",
+  "test:all": "npm run test:e2e && npm run test:api"
 },
   "keywords": [],
   "author": "",
@@ -17,6 +19,7 @@
     "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
     "cypress": "^15.16.0",
-    "esbuild": "^0.28.0"
+    "esbuild": "^0.28.0",
+    "newman": "^6.2.2"
   }
 }

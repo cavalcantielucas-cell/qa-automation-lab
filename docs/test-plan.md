@@ -85,16 +85,6 @@ Abrir o Cypress:
 ```bash
 npm run cy:open
 
-
----
-
-# 3. Criar `docs/test-cases.md`
-
-Crie o arquivo:
-
-```txt
-docs/test-cases.md
-
 # Casos de Teste - QA Automation Lab
 
 ## CT001 - Login com usuário válido
