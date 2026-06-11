@@ -260,3 +260,14 @@ Gerado em:
 
 ```txt
 reports/cypress/
+
+## Relatórios de execução
+
+O projeto gera relatórios HTML para os testes E2E e para os testes de API.
+
+### Relatório Cypress
+
+O relatório dos testes E2E é gerado com Mochawesome e salvo em:
+
+```txt
+reports/cypress/
