@@ -29,8 +29,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Cypress E2E tests
-        run: npm run test:e2e
+      - name: Run Cypress E2E tests with report
+        run: npm run test:e2e:report
 
       - name: Run Postman API tests with Newman
         run: npm run test:api:report

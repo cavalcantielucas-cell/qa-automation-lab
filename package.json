@@ -8,11 +8,18 @@
   "cy:run": "cypress run",
   "test:e2e": "cypress run",
   "test:e2e:chrome": "cypress run --browser chrome",
+
+  "report:cypress:merge": "mochawesome-merge \"reports/cypress/.jsons/*.json\" > reports/cypress/mochawesome.json",
+  "report:cypress:html": "marge reports/cypress/mochawesome.json --reportDir reports/cypress --reportFilename cypress-report --inline",
+  "test:e2e:report": "npm run test:e2e && npm run report:cypress:merge && npm run report:cypress:html",
+
   "test:api": "newman run ./postman/collections/jsonplaceholder-api.postman_collection.json --env-var baseUrl=https://jsonplaceholder.typicode.com --env-var userId=1 --env-var postId=1",
   "pretest:api:report": "node -e \"require('fs').mkdirSync('reports/newman',{recursive:true})\"",
   "test:api:report": "newman run ./postman/collections/jsonplaceholder-api.postman_collection.json --env-var baseUrl=https://jsonplaceholder.typicode.com --env-var userId=1 --env-var postId=1 -r cli,htmlextra --reporter-htmlextra-export reports/newman/api-report.html",
+
+  "clean:reports": "node -e \"require('fs').rmSync('reports',{recursive:true,force:true})\"",
   "test:all": "npm run test:e2e && npm run test:api",
-  "test:reports": "npm run test:e2e && npm run test:api:report"
+  "test:reports": "npm run clean:reports && npm run test:e2e:report && npm run test:api:report"
 },
   "keywords": [],
   "author": "",
@@ -24,6 +31,8 @@
     "cypress": "^15.16.0",
     "cypress-mochawesome-reporter": "^4.0.2",
     "esbuild": "^0.28.0",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2",
     "newman": "^6.2.2",
     "newman-reporter-htmlextra": "^1.23.1"
   }
